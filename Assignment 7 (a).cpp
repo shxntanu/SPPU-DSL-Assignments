@@ -136,6 +136,8 @@ void CDLL::display()
         temp=temp->next;
         count++;
     }
+    
+    // Last seat
     cout<<"S"<<temp->seat;
     if(temp->status==0)
         cout<<"|___|";
