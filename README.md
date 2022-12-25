@@ -20,8 +20,30 @@ to compute following: -
 ### Question 2:
 
 Write a Python program to compute following operations on String:
-a) To display word with the longest length 
-b) To determines the frequency of occurrence of particular character in the string 
-c) To check whether given string is palindrome or not 
-d) To display index of first appearance of the substring 
-e) To count the occurrences of each word in a given string (Do not use string built-in functions)
+
+1. To display word with the longest length 
+2. To determines the frequency of occurrence of particular character in the string 
+3. To check whether given string is palindrome or not 
+4. To display index of first appearance of the substring 
+5. To count the occurrences of each word in a given string 
+
+(Do not use string built-in functions)
+
+### Question 3: 
+
+Write a python program to compute following computation on matrix:
+
+1. Addition of two matrices 
+2. Subtraction of two matrices
+3. Multiplication of two matrices 
+4. Transpose of a matrix
+
+### Question 4: 
+
+1. Write a python program to store roll numbers of student in array who attended training
+program in random order. Write function for searching whether particular student attended
+training program or not, using Linear search and Sentinel search.
+
+2.  Write a python program to store roll numbers of student array who attended training
+program in sorted order. Write function for searching whether particular student attended
+training program or not, using Binary search and Fibonacci search
