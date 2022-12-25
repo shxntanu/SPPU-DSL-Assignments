@@ -2,7 +2,7 @@
 
 Codes of the Assignments in the DSL Lab Manual of SPPU Second Year Computer Engineering Syllabus.
 
-** Problem Statements: ** 
+**Problem Statements:** 
 
 ### Question 1:
 
