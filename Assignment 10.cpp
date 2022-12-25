@@ -59,7 +59,7 @@ int main()
         }   
     }
 
-    if(flag)
+    if(flag or !s.isEmpty())
     {
         cout<<"Wrongly Formatted Expression!"<<endl;
         return 0;
