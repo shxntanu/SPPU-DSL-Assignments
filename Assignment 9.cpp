@@ -37,18 +37,18 @@ int main()
             char t = s.pop();
             if(str[i]=='}' and t=='{')
                 continue;
-            else if(str[i]==']' and t=='[')
+            if(str[i]==']' and t=='[')
                 continue;
-            else if(str[i]==')' and t=='(')
+            if(str[i]==')' and t=='(')
                 continue;
-            else
-                cout<<"Wrong Formatting!"<<endl;
-                flag=1;
-                break;
+            flag=1;
+            break;
         }   
     }
-    if(!flag)
-        cout<<"Correct Formatting";
+    if(flag or !s.isEmpty())
+        cout<<"Incorrect Formatting"<<endl;
+    else
+        cout<<"Correct Formatting"<<endl;
     return 0;
 }
 
