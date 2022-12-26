@@ -73,7 +73,7 @@ int main()
             if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')|| (c >= '0' && c <= '9'))
                 result += c;
     
-            else if(in == '(' or in == '{' or in == '[')
+            else if(c == '(' or c == '{' or c == '[')
                 s.push(c);
 
             else if (c == ')') 
