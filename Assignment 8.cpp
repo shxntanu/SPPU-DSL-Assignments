@@ -40,7 +40,7 @@ int main()
     int flag =1;
     while(flag)
     {
-        cout<<"\n~~~~~ DOCTOR ~~~~~";
+        cout<<"\n~~~~~ DOCTOR ~~~~~"<<endl;
         cout<<"Enter: \n1. Check Free slots\n2. Book a slot\n3. Cancel a booking:  ";
         cin>>choice;
         switch (choice)
@@ -60,8 +60,17 @@ int main()
             default:
                 cout<<"\nWrong input"<<endl;
         }
+        label:
         cout<<"\nDo you want to perform any other operation? (1/0): ";
         cin>>flag;
+        if(flag == 1 or flag == 0)
+            continue;
+        else
+        {
+            cout<<"Wrong Input!"<<endl;
+            goto label;
+        }
+        
     }
     return 0;
 }
@@ -127,4 +136,3 @@ void Appointment::cancel()
     temp->status=0;
     cout<<"\nTime slot of "<<temp->stime<<" has been cancelled"<<endl;
 }
-
