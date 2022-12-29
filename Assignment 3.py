@@ -32,7 +32,7 @@ prod_matrix = [[0]*r]*c
 for i in range(len(m1)):
     for j in range(len(m2[0])): #columns of m2
         for k in range(len(m2)): #rows of m2 in the same column
-            prod_matrix[i][j]+=m1[i][k]*m2[k][j]
+            prod_matrix[i][j] += m1[i][k]*m2[k][j]
 
 print("Product of m1 and m2: ")
 matrix_display(prod_matrix)
