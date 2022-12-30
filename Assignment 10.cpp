@@ -1,30 +1,25 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-
 #define MAX 100
 
-class Stack 
-{
-    public:
-        int top;
-        char a[MAX];
+class Stack {
 
-    public:
-        Stack() { top = -1; }
-        bool isEmpty();
-        char peek();
-        char pop();
-        bool push(char x);
+public:
+    char a[MAX];
+    int top;
+    Stack(){ top = -1; }
+    bool push(char c);
+    char pop();
+    char peek();
+    bool isEmpty();
 };
 
 int precedence(char c)
 {
-    if (c == '^')
-        return 3;
-    else if (c == '/' || c == '*')
+    if(c=='*' or c=='/')
         return 2;
-    else if (c == '+' || c == '-')
+    else if (c=='+' or c=='-')
         return 1;
     else
         return -1;
@@ -33,17 +28,19 @@ int precedence(char c)
 int main()
 {
     Stack s;
+    string e;
     cout<<"Enter Expression: ";
-    string exp;
-    cin>>exp;
+    cin>>e;
+    char exp[e.length()];
+    strcpy(exp, e.c_str());
     bool flag=0;
     string result="";
-    for(int i=0;i<exp.length();i++)
+    for(int i=0;i<e.length();i++)
     {
         char c = exp[i];
         if(c=='{' or c=='[' or c=='(')
             s.push(c);
-        
+
         if(c=='}' or c==']' or c==')')
         {
             char t = s.pop();
@@ -56,93 +53,77 @@ int main()
             else
                 flag=1;
                 break;
-        }   
+        }
     }
-
-    if(flag or !s.isEmpty())
+    if(flag)
     {
         cout<<"Wrongly Formatted Expression!"<<endl;
         return 0;
     }
     else
     {
-        for(int i=0;i<exp.length();i++)
+        for(int i=0;i<e.length();i++)
         {
             char c = exp[i];
-  
-            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')|| (c >= '0' && c <= '9'))
-                result += c;
-    
-            else if(c == '(' or c == '{' or c == '[')
+
+            if(c=='(' or c=='{' or c=='[')
                 s.push(c);
 
-            else if (c == ')') 
+            else if((c>='a' and c<='z') or (c>='A' and c<='Z') or (c>='0' and c<='9'))
+                result += c;
+
+            else if(c==')')
             {
-                while (s.peek() != '(')
-                {
+                while(s.peek()!='(')
                     result += s.pop();
-                }
                 s.pop();
             }
-            else if (c == '}') 
+            else if(c=='}')
             {
-                while (s.peek() != '{')
-                {
+                while(s.peek()!='{')
                     result += s.pop();
-                }
                 s.pop();
             }
-            else if (c == ']') 
+            else if(c==']')
             {
-                while (s.peek() != '[')
-                {
+                while(s.peek()!='[')
                     result += s.pop();
-                }
                 s.pop();
             }
             else
             {
-                while (!s.isEmpty() && precedence(exp[i]) <= precedence(s.peek()))
-                {
-                    result += s.pop();
-                }
+                while(!s.isEmpty() and precedence(exp[i]) <= precedence(s.peek()))
+                    result+=s.pop();
                 s.push(c);
             }
         }
-        while (!s.isEmpty())
-        {
-            result += s.pop();
-        }
-    }
+        while(!s.isEmpty())
+            result+=s.pop();
 
-    cout<<endl<<"Postfix Expression: "<<result<<endl;
+        cout<<"\nPostfix Expression: "<<result<<endl;
 
-    for(int i=0;i<result.length();i++)
-    {
-        char c = result[i];
-        if (c>=48 and c<=57)
+        for(int i=0;i<result.length();i++)
         {
-            s.push(c);
+            char c = result[i];
+            if(c >= 48 and c <= 57)
+                s.push(c);
+            else {
+                int res;
+                int a = s.pop() - 48;
+                int b = s.pop() - 48;
+                if(c == '+')
+                    res = b+a;
+                else if(c == '-')
+                    res = b-a;
+                else if(c=='*')
+                    res = b*a;
+                else if(c == '/')
+                    res = b/a;
+                s.push(res+48);
+            }
         }
-        else
-        {
-            int a = s.pop()-48;
-            int b = s.pop()-48;
-            int res;
-            if(c=='+')
-                res = a+b;
-            else if(c=='-')
-                res = a-b;
-            else if(c=='*')
-                res = a*b;
-            else if(c=='/')
-                res = a/b;
-            else if(c=='^')
-                res = a^b;
-            s.push(res+48);
-        }
+        cout<<"Result: "<<s.peek()<<endl;
     }
-    cout<<"Result: "<<s.pop()<<endl;
     return 0;
 }
 
