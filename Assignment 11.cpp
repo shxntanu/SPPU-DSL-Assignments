@@ -11,7 +11,7 @@ void Insert()
     else
     {
        if (front == - 1)
-       front = 0;
+           front = 0;
        cout<<"Insert the element in queue : "<<endl;
        cin>>val;
        rear++;
